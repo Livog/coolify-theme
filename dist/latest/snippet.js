@@ -226,6 +226,7 @@ html.dark .top-user-menu-panel-sidebar .listbox-option:hover {
 .split-action-main,
 .split-action-caret {
   --button-depth-color: transparent !important;
+  transition-duration: 150ms;
 }
 
 .button:not(:disabled):is(:hover, :active),
