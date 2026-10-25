@@ -1,0 +1,31 @@
+html:not(.dark) .app-main {
+  background-color: var(--color-white);
+}
+
+.app-topbar > div:not(.app-topbar-brand) {
+  border-bottom-color: var(--ui-border);
+}
+
+html.dark.is-scrolled:not([data-nav-style="floating"]) .app-topbar > div:not(.app-topbar-brand) {
+  border-bottom-color: var(--ui-border);
+  box-shadow: 0 10px 30px -14px oklch(0% 0 0 / .95);
+}
+
+.app-shell:not(:has(.sidebar-collapsed)) {
+  --sidebar-w: 16rem !important;
+}
+
+@media (width >= 1024px) {
+  .app-sidebar,
+  .app-topbar-brand {
+    width: var(--sidebar-w);
+  }
+
+  .app-shell .app-main {
+    margin-left: var(--sidebar-w);
+  }
+}
+
+:is(.app-sidebar, .mobile-sidebar-sheet) .menu-item-label {
+  font-size: 14px;
+}

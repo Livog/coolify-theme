@@ -1,0 +1,12 @@
+:is(.input, .select):not(:focus-visible),
+.application-settings-workspace :is(.input, .select):not(:focus-visible) {
+  background-color: var(--ui-input-bg);
+  border-color: var(--ui-input);
+}
+
+.dark .application-settings-form :is(.input, select, textarea):focus,
+.dark .application-settings-form :is(.input, select, textarea):focus-visible,
+.dark .application-settings-workspace :is(.input, select, textarea):focus,
+.dark .application-settings-workspace :is(.input, select, textarea):focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ui-brand) 30%, transparent) !important;
+}

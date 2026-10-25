@@ -1,0 +1,8 @@
+html.dark .listbox-panel.top-user-menu-panel-sidebar {
+  background: var(--coollabs-elevated);
+  border-color: var(--ui-border);
+}
+
+html.dark .top-user-menu-panel-sidebar .listbox-option:hover {
+  background-color: var(--ui-accent);
+}

@@ -1,0 +1,14 @@
+:is(.application-settings-section, .application-settings-section-body, .empty-state),
+.dark :is(.application-settings-section, .application-settings-section-body, .empty-state) {
+  --card-border: var(--ui-border);
+}
+
+html.dark .resource-glyph {
+  color: var(--color-fg-dim);
+  background: var(--ui-input-bg);
+  border-color: var(--ui-border);
+}
+
+html.dark .app-main :is(article.group, a.group).rounded-xl:hover {
+  border-color: oklch(100% 0 0 / .2);
+}

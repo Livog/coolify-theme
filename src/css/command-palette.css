@@ -1,0 +1,37 @@
+.command-palette {
+  --color-accent: var(--ui-fg);
+  --color-brand-light: var(--ui-muted-fg);
+}
+
+html.dark .command-palette {
+  background: var(--coollabs-elevated);
+  box-shadow: 0 0 0 1px var(--ui-border), var(--shadow-dropdown);
+}
+
+html.dark .command-palette-body {
+  background: var(--coollabs-base);
+  box-shadow: 0 0 0 1px var(--ui-border);
+}
+
+html.dark .command-palette-input::placeholder {
+  color: var(--color-fg-faint);
+}
+
+.command-palette-item:focus,
+.command-palette-item:focus-visible,
+button.command-palette-item:focus-visible,
+a.command-palette-item:focus-visible,
+.command-palette-item:focus .command-palette-type-badge,
+.command-palette-item:focus-visible .command-palette-type-badge,
+.command-palette-item:focus .command-palette-quickcommand,
+.command-palette-item:focus-visible .command-palette-quickcommand {
+  background: var(--ui-accent);
+}
+
+.command-palette-item:focus .command-palette-item-icon,
+.command-palette-item:focus-visible .command-palette-item-icon,
+.command-palette-item:focus .command-palette-item-icon.is-create,
+.command-palette-item:focus-visible .command-palette-item-icon.is-create {
+  background: var(--ui-accent);
+  box-shadow: inset 0 0 0 1px var(--ui-border);
+}

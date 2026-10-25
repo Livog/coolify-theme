@@ -1,0 +1,57 @@
+:root {
+  --ui-brand: oklch(54.6% .245 262.9);
+  --ui-fg: var(--color-black);
+  --ui-muted-fg: var(--color-neutral-500);
+  --ui-accent: var(--color-neutral-100);
+  --ui-border: var(--color-neutral-200);
+  --ui-input: var(--color-neutral-200);
+  --ui-input-bg: var(--color-white);
+  --ui-input-hover: var(--color-neutral-100);
+  --ui-primary: var(--color-black);
+  --ui-primary-fg: var(--color-neutral-50);
+  --ui-sidebar: var(--color-neutral-50);
+  --ui-sidebar-hover: color-mix(in oklab, var(--color-neutral-100), var(--color-neutral-200));
+  --ui-sidebar-active: var(--color-neutral-200);
+
+  --color-brand: var(--ui-brand);
+  --color-brand-hover: oklch(from var(--ui-brand) calc(l + .05) c h);
+  --color-brand-press: oklch(from var(--ui-brand) calc(l - .05) c h);
+  --color-brand-depth: oklch(from var(--ui-brand) calc(l - .12) c h);
+  --color-brand-light: oklch(from var(--ui-brand) calc(l + .2) calc(c * .6) h);
+  --color-accent: var(--ui-brand);
+  --color-coollabs: var(--ui-brand);
+  --color-coollabs-50: oklch(from var(--ui-brand) .97 .02 h);
+  --color-coollabs-100: var(--color-brand-hover);
+  --color-coollabs-200: var(--color-brand-press);
+  --color-coollabs-300: var(--color-brand-depth);
+  --livewire-progress-bar-color: var(--ui-brand);
+
+  --color-nav-text: var(--ui-fg);
+  --color-nav-active: var(--ui-fg);
+  --color-nav-muted: color-mix(in oklab, var(--ui-fg) 70%, transparent);
+  --coollabs-line: var(--ui-input);
+  --coollabs-hairline: var(--ui-border);
+}
+
+.dark {
+  --ui-fg: var(--color-neutral-50);
+  --ui-muted-fg: var(--color-neutral-400);
+  --ui-accent: var(--color-neutral-800);
+  --ui-border: oklch(100% 0 0 / .1);
+  --ui-input: oklch(100% 0 0 / .15);
+  --ui-input-bg: oklch(100% 0 0 / .045);
+  --ui-input-hover: oklch(100% 0 0 / .075);
+  --ui-primary: var(--color-neutral-200);
+  --ui-primary-fg: var(--color-neutral-900);
+  --ui-sidebar: var(--color-neutral-900);
+  --ui-sidebar-hover: var(--color-neutral-800);
+  --ui-sidebar-active: var(--color-neutral-800);
+
+  --color-app: var(--color-neutral-950);
+  --color-card: var(--color-neutral-900);
+  --color-sidebar: var(--ui-sidebar);
+  --color-fg: var(--ui-fg);
+  --color-fg-dim: var(--ui-muted-fg);
+  --color-hairline: var(--ui-border);
+  --coollabs-elevated: var(--color-neutral-900);
+}

@@ -1,0 +1,28 @@
+/* Coolify's purple here is !important in @layer utilities, only an earlier layer beats it */
+@layer theme {
+  html.dark .view-toggle {
+    background-color: var(--ui-input-bg) !important;
+    border-color: var(--ui-input) !important;
+  }
+}
+
+html.dark .view-toggle > :is(a, button) {
+  color: var(--color-fg-dim);
+}
+
+html.dark .view-toggle > :is(a, button) svg {
+  color: currentColor;
+}
+
+html.dark .view-toggle > :is(a, button):not(.is-selected):hover,
+html.dark .view-toggle > .is-selected {
+  color: var(--color-fg);
+  background: var(--ui-accent);
+  box-shadow: none;
+}
+
+.view-toggle .bg-coollabs,
+html.dark .view-toggle .bg-coollabs {
+  color: var(--ui-fg);
+  background-color: var(--ui-accent);
+}

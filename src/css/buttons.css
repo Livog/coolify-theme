@@ -1,0 +1,56 @@
+/* Coolify's purple here is !important in @layer utilities, only an earlier layer beats it */
+@layer theme {
+  .dark .button:not(.button-highlighted):not(.button-error):not([ishighlighted]):not(:disabled) {
+    color: var(--color-fg) !important;
+    background-color: var(--ui-input-bg) !important;
+    border-color: var(--ui-input) !important;
+  }
+
+  .dark .button:not(.button-highlighted):not(.button-error):not([ishighlighted]):not(:disabled):hover {
+    background-color: var(--ui-input-hover) !important;
+  }
+}
+
+.dark .button:not(.button-highlighted):not(.button-error):not([ishighlighted]):not(:disabled) svg {
+  color: inherit;
+}
+
+.button:not(.button-highlighted):not(.button-error):not([ishighlighted]):not(:disabled):hover {
+  background-color: var(--ui-input-hover);
+}
+
+.button,
+.split-action-main,
+.split-action-caret {
+  --button-depth-color: transparent !important;
+}
+
+.button:not(:disabled):is(:hover, :active),
+.split-action-main:not(:disabled):is(:hover, :active),
+.split-action-caret:not(:disabled):is(:hover, :active) {
+  transform: none;
+}
+
+:is(.button-highlighted, [ishighlighted], .split-action-main, .split-action-caret):not(:disabled) {
+  --color-accent-foreground: var(--ui-primary-fg);
+  background: var(--ui-primary) !important;
+  color: var(--ui-primary-fg) !important;
+  border-color: var(--ui-primary) !important;
+}
+
+:is(.button-highlighted, [ishighlighted], .split-action-main, .split-action-caret):not(:disabled):hover {
+  background: color-mix(in oklab, var(--ui-primary) 90%, transparent) !important;
+}
+
+.split-action-caret:not(:disabled) {
+  border-left-color: color-mix(in oklab, var(--ui-primary-fg) 20%, transparent) !important;
+}
+
+html.dark .card-icon-button {
+  color: var(--color-fg-dim);
+}
+
+html.dark .card-icon-button:hover {
+  color: var(--color-fg);
+  background-color: var(--ui-accent);
+}
