@@ -33,6 +33,17 @@ const compare = (a: string, b: string) => {
   return x[0] - y[0] || x[1] - y[1] || x[2] - y[2];
 };
 
+const versionsFile = Bun.file('dist/versions.json');
+const known: string[] = (await versionsFile.exists()) ? await versionsFile.json() : [];
+const newest = known.at(-1);
+if (newest && compare(version, newest) < 0) {
+  console.error(
+    `src/ targets Coolify ${newest}. Building ${version} from it would overwrite that build with newer CSS.\n` +
+      `Patch ${version} from its tag instead, see "Patching an older build" in README.md.`,
+  );
+  process.exit(1);
+}
+
 const css = await inlineImports('src/theme.css');
 const accordion = await read('src/js/accordion.js');
 const versionSync = await read('src/js/version-sync.js');
@@ -48,15 +59,10 @@ await Bun.write(
 );
 await Bun.write('dist/loader.js', fill(await Bun.file('src/loader.js').text(), { FLAT_NAV_DEFAULT: flatNavDefault }));
 
-const versionsFile = Bun.file('dist/versions.json');
-const known: string[] = (await versionsFile.exists()) ? await versionsFile.json() : [];
 const versions = [...new Set([...known, version])].sort(compare);
 await Bun.write(versionsFile, `${JSON.stringify(versions, null, 2)}\n`);
 
-const isLatest = versions.at(-1) === version;
-if (isLatest) {
-  await rm('dist/latest', { recursive: true, force: true });
-  await cp(outDir, 'dist/latest', { recursive: true });
-}
+await rm('dist/latest', { recursive: true, force: true });
+await cp(outDir, 'dist/latest', { recursive: true });
 
-console.log(`Built ${outDir}${isLatest ? ' (also dist/latest)' : ''}`);
+console.log(`Built ${outDir} and dist/latest`);

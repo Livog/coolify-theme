@@ -48,6 +48,14 @@ Each Coolify version the theme was checked against gets its own build in `dist/<
 
 A new Coolify release automatically uses the newest older build until a dedicated one exists. A daily workflow opens an issue in this repo when Coolify ships a new version.
 
+## Versioning
+
+A build covers a range of Coolify versions: `dist/4.5.0/` serves 4.5.0 and every later version until the next build. A new build is only made when a Coolify release breaks the theme.
+
+Fixes go forward: they land in the newest build, and older builds stay exactly as they were tested. Installs on an older Coolify get fixes by updating Coolify.
+
+Every build has a git tag, `coolify-<version>`, pointing at the commit whose `src/` produced it. Use the tags to browse the source of any build or to compare two, for example [`coolify-4.5.0...main`](https://github.com/Livog/coolify-theme/compare/coolify-4.5.0...main).
+
 ## Security
 
 Code injected into the Coolify dashboard runs as the logged-in user, who can deploy, read secrets and manage servers. With option 1 you trust whoever controls this repo, the same as with any auto-updating dependency. If that's not acceptable, use option 2 or 3 and review what you paste.
@@ -62,7 +70,37 @@ The colors are tokens in [`src/css/tokens.css`](src/css/tokens.css): `:root` for
 bun run build.ts 4.5.0
 ```
 
-Builds `src/` into `dist/4.5.0/` (`style.css`, `script.js`, `snippet.js`), updates `dist/versions.json` and `dist/loader.js`, and copies the build to `dist/latest/` when it is the newest version. Pushing changes under `dist/` deploys GitHub Pages.
+Builds `src/` into `dist/4.5.0/` (`style.css`, `script.js`, `snippet.js`), updates `dist/versions.json`, `dist/loader.js` and `dist/latest/`. Commit `src/` and `dist/` together and push: GitHub Pages deploys, and the `coolify-4.5.0` tag moves to that commit.
+
+### Releasing for a new Coolify version
+
+When the daily check opens an issue for a new Coolify release, update your Coolify and look over the theme:
+
+- **Still works**: close the issue. No build is needed.
+- **Something broke**: fix `src/`, run `bun run build.ts <new-version>`, commit and push.
+
+`src/` always targets the newest build. Rebuilding an older version from it is refused, because it would overwrite that build with CSS written for a newer Coolify.
+
+### Patching an older build
+
+Rarely needed, since fixes go forward. To patch `4.5.0` after newer builds exist:
+
+```
+git worktree add ../coolify-theme-4.5.0 coolify-4.5.0
+cd ../coolify-theme-4.5.0
+git switch -c patch-4.5.0
+# fix src/, then:
+bun run build.ts 4.5.0
+git commit -am "fix(4.5.0): describe the fix"
+git tag -f coolify-4.5.0 && git push -f origin coolify-4.5.0
+
+cd -
+git checkout patch-4.5.0 -- dist/4.5.0
+git commit -m "fix(4.5.0): describe the fix" && git push
+git worktree remove ../coolify-theme-4.5.0 && git branch -D patch-4.5.0
+```
+
+The tag keeps the patched source reachable, and the tag workflow leaves tags that point outside `main` alone.
 
 | Path | What it is |
 |---|---|

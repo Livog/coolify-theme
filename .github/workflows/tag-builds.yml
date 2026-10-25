@@ -1,0 +1,35 @@
+name: Tag builds
+
+on:
+  push:
+    branches: [main]
+    paths: [dist/**]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Point each coolify-<version> tag at the source of its build
+        run: |
+          for version in $(jq -r '.[]' dist/versions.json); do
+            [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Unexpected version: $version"; exit 1; }
+            tag="coolify-$version"
+            built=$(git log -1 --format=%H -- "dist/$version")
+            current=$(git rev-parse -q --verify "refs/tags/$tag^{commit}" || true)
+            if [ -n "$current" ] && ! git merge-base --is-ancestor "$current" HEAD; then
+              echo "$tag points at a patch outside main, leaving it"
+              continue
+            fi
+            if [ "$current" != "$built" ]; then
+              git tag -f "$tag" "$built"
+              git push -f origin "refs/tags/$tag"
+              echo "$tag -> $built"
+            fi
+          done

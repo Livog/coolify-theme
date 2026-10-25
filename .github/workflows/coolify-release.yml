@@ -29,6 +29,8 @@ jobs:
             echo "Issue already exists for Coolify $version"
             exit 0
           fi
-          gh issue create --title "$title" --body "Coolify v$version is out. Until it has its own build, installs on v$version use the newest older theme build.
+          gh issue create --title "$title" --body "Coolify v$version is out. Installs on v$version use the newest older theme build until it gets its own.
 
-          Check the theme against v$version, then run \`bun run build.ts $version\` and push."
+          Check the theme on v$version:
+          - Still works: close this issue. No build is needed.
+          - Something broke: fix src/, run \`bun run build.ts $version\`, commit and push."
