@@ -234,6 +234,16 @@ html.dark .top-user-menu-panel-sidebar .listbox-option:hover {
   transform: none;
 }
 
+:is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
+  transform: scale(.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
+    transform: none;
+  }
+}
+
 :is(.button-highlighted, [ishighlighted], .split-action-main, .split-action-caret):not(:disabled) {
   --color-accent-foreground: var(--ui-primary-fg);
   background: var(--ui-primary) !important;
