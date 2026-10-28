@@ -5,7 +5,7 @@ document.addEventListener('livewire:navigated', () => {
     const state = Alpine.$data(nav);
     const drillDown = () => state.collapsed && matchMedia('(width >= 1024px)').matches;
     const panels = [...nav.querySelectorAll('.sidebar-menu > li[x-show]:has(.menu-back)')];
-    for (const button of nav.querySelectorAll('.sidebar-menu > li[x-show="!submenu"] button.menu-item[title]')) {
+    for (const button of nav.querySelectorAll('.sidebar-menu > li[x-show$="!submenu"] button.menu-item[title]')) {
       const panel = panels.find(li => li.querySelector('.menu-back').textContent.trim() === button.title);
       if (!panel) continue;
       const list = document.createElement('ul');

@@ -26,18 +26,18 @@
   transition-duration: 150ms;
 }
 
-.button:not(:disabled):is(:hover, :active),
-.split-action-main:not(:disabled):is(:hover, :active),
-.split-action-caret:not(:disabled):is(:hover, :active) {
+html[data-nav-items] .button:not(:disabled):is(:hover, :active),
+html[data-nav-items] .split-action-main:not(:disabled):is(:hover, :active),
+html[data-nav-items] .split-action-caret:not(:disabled):is(:hover, :active) {
   transform: none;
 }
 
-:is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
+html[data-nav-items] :is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
   transform: scale(.98);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
+  html[data-nav-items] :is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
     transform: none;
   }
 }

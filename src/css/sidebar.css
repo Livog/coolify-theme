@@ -3,9 +3,9 @@
   border-color: var(--ui-border);
 }
 
-html.dark .app-sidebar nav.sidebar-nav,
-html.dark .mobile-sidebar-sheet [role="dialog"],
-html.dark .app-topbar-brand {
+html.dark:not([data-theme="custom"]) .app-sidebar nav.sidebar-nav,
+html.dark:not([data-theme="custom"]) .mobile-sidebar-sheet [role="dialog"],
+html.dark:not([data-theme="custom"]) .app-topbar-brand {
   --color-nav-text: inherit;
   --color-nav-muted: inherit;
   background-image: none;
@@ -21,18 +21,18 @@ html.dark .app-topbar-brand {
   background-color: var(--ui-sidebar-active);
 }
 
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search,
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search,
 :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search {
   background-color: var(--ui-input-bg) !important;
   box-shadow: inset 0 0 0 1px var(--ui-input) !important;
 }
 
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search kbd,
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) .sidebar-nav [class*="dark:border-white/"] {
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search kbd,
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) .sidebar-nav [class*="dark:border-white/"] {
   border-color: var(--ui-border) !important;
 }
 
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) nav:not(.sidebar-collapsed) .nav-section {
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) nav:not(.sidebar-collapsed) .nav-section {
   font-family: inherit;
   font-size: 12px;
   letter-spacing: normal;

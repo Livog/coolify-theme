@@ -6,15 +6,15 @@
   }
 }
 
-html.dark .view-toggle > :is(a, button) {
+html.dark .view-toggle :is(a, button) {
   color: var(--color-fg-dim);
 }
 
-html.dark .view-toggle > :is(a, button) svg {
+html.dark .view-toggle :is(a, button) svg {
   color: currentColor;
 }
 
-html.dark .view-toggle > :is(a, button):not(.is-selected):hover,
+html.dark .view-toggle :is(a, button):not(.is-selected):hover,
 html.dark .view-toggle > .is-selected {
   color: var(--color-fg);
   background: var(--ui-accent);

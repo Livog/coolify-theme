@@ -93,9 +93,9 @@ html.dark.is-scrolled:not([data-nav-style="floating"]) .app-topbar > div:not(.ap
   border-color: var(--ui-border);
 }
 
-html.dark .app-sidebar nav.sidebar-nav,
-html.dark .mobile-sidebar-sheet [role="dialog"],
-html.dark .app-topbar-brand {
+html.dark:not([data-theme="custom"]) .app-sidebar nav.sidebar-nav,
+html.dark:not([data-theme="custom"]) .mobile-sidebar-sheet [role="dialog"],
+html.dark:not([data-theme="custom"]) .app-topbar-brand {
   --color-nav-text: inherit;
   --color-nav-muted: inherit;
   background-image: none;
@@ -111,18 +111,18 @@ html.dark .app-topbar-brand {
   background-color: var(--ui-sidebar-active);
 }
 
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search,
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search,
 :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search {
   background-color: var(--ui-input-bg) !important;
   box-shadow: inset 0 0 0 1px var(--ui-input) !important;
 }
 
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search kbd,
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) .sidebar-nav [class*="dark:border-white/"] {
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) .menu-search kbd,
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) .sidebar-nav [class*="dark:border-white/"] {
   border-color: var(--ui-border) !important;
 }
 
-html.dark :is(.app-sidebar, .mobile-sidebar-sheet) nav:not(.sidebar-collapsed) .nav-section {
+html.dark:not([data-theme="custom"]) :is(.app-sidebar, .mobile-sidebar-sheet) nav:not(.sidebar-collapsed) .nav-section {
   font-family: inherit;
   font-size: 12px;
   letter-spacing: normal;
@@ -192,12 +192,12 @@ html.dark :is(.app-sidebar, .mobile-sidebar-sheet) nav:not(.sidebar-collapsed) .
   }
 }
 
-html.dark .listbox-panel.top-user-menu-panel-sidebar {
+html.dark:not([data-theme="custom"]) .listbox-panel.top-user-menu-panel-sidebar {
   background: var(--coollabs-elevated);
   border-color: var(--ui-border);
 }
 
-html.dark .top-user-menu-panel-sidebar .listbox-option:hover {
+html.dark:not([data-theme="custom"]) .top-user-menu-panel-sidebar .listbox-option:hover {
   background-color: var(--ui-accent);
 }
 
@@ -229,18 +229,18 @@ html.dark .top-user-menu-panel-sidebar .listbox-option:hover {
   transition-duration: 150ms;
 }
 
-.button:not(:disabled):is(:hover, :active),
-.split-action-main:not(:disabled):is(:hover, :active),
-.split-action-caret:not(:disabled):is(:hover, :active) {
+html[data-nav-items] .button:not(:disabled):is(:hover, :active),
+html[data-nav-items] .split-action-main:not(:disabled):is(:hover, :active),
+html[data-nav-items] .split-action-caret:not(:disabled):is(:hover, :active) {
   transform: none;
 }
 
-:is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
+html[data-nav-items] :is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
   transform: scale(.98);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
+  html[data-nav-items] :is(.button, .split-action-main, .split-action-caret):not(:disabled, [aria-haspopup], :is(.app-sidebar, .mobile-sidebar-sheet) *):active {
     transform: none;
   }
 }
@@ -305,15 +305,15 @@ html.dark .app-main :is(article.group, a.group).rounded-xl:hover {
   }
 }
 
-html.dark .view-toggle > :is(a, button) {
+html.dark .view-toggle :is(a, button) {
   color: var(--color-fg-dim);
 }
 
-html.dark .view-toggle > :is(a, button) svg {
+html.dark .view-toggle :is(a, button) svg {
   color: currentColor;
 }
 
-html.dark .view-toggle > :is(a, button):not(.is-selected):hover,
+html.dark .view-toggle :is(a, button):not(.is-selected):hover,
 html.dark .view-toggle > .is-selected {
   color: var(--color-fg);
   background: var(--ui-accent);
